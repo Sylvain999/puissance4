@@ -1,6 +1,25 @@
+use std::{u8, default};
+
+#[derive(Debug)]
 pub enum Player {
     Player1,
     Player2
+}
+
+impl PartialEq for Player {
+    fn eq(&self, other: &Self) -> bool {
+        core::mem::discriminant(self) == core::mem::discriminant(other)
+    }
+}
+
+impl Player {
+    pub fn eq_index(&self, index : u8) -> bool {
+        match index {
+            0 => *self == Player::Player1,
+            1 => *self == Player::Player2,
+            default => false,
+        }
+    }
 }
 
 
@@ -23,6 +42,10 @@ impl Case {
             self.player = Some(player);
             Ok(())
         }        
+    }
+
+    pub fn get_player(&self) -> &Option<Player> {
+        &self.player
     }
 }
 
