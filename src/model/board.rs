@@ -1,6 +1,6 @@
 use std::ops::Add;
 
-use super::case::Case;
+use super::case::{Case, Player};
 
 pub struct Board{
     cases : Vec<Vec<Case>>,
@@ -14,7 +14,7 @@ impl Board {
         let cases = (0..height)
             .map(|_| (
                 (0..width)
-                    .map(|_| Case::Empty)
+                    .map(|_| Case::new())
                     .collect::<Vec<Case>>()
             ))
             .collect::<Vec<Vec<Case>>>();
@@ -27,10 +27,10 @@ impl Board {
 
     pub fn player_plays(&mut self, coord_x : usize, coord_y : usize) {
         if self.player_turn == 0 {
-            self.cases[coord_x][coord_y] = Case::Player_1;
+            self.cases[coord_x][coord_y].set_player(Player::Player1);
             self.player_turn = 1
         } else {
-            self.cases[coord_x][coord_y] = Case::Player_2;
+            self.cases[coord_x][coord_y].set_player(Player::Player2);
             self.player_turn = 0
         }
     }
