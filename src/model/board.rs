@@ -25,15 +25,29 @@ impl Board {
         }
     }    
 
-    pub fn player_plays(&mut self, coord_x : usize, coord_y : usize) {
-        if self.player_turn == 0 {
-            self.cases[coord_x][coord_y].set_player(Player::Player1);
-            self.player_turn = 1
-        } else {
-            self.cases[coord_x][coord_y].set_player(Player::Player2);
-            self.player_turn = 0
-        }
+    pub fn player_plays(&mut self, coord_x : usize, coord_y : usize) -> Result<u32, String> {
+        self.cases.get_mut(coord_x)
+            .ok_or("X coordinates out of bound")?
+            .get_mut(coord_y)
+            .ok_or("Y coordinates out of bound")?
+            .set_player(
+                if self.player_turn == 0 {
+                    Player::Player1
+                } else {
+                    Player::Player2
+                }
+            )?;
+
+        self.prepare_next_turn();
+
+        Ok(0)
     }
+
+    fn prepare_next_turn(&mut self) {
+        self.player_turn = (self.player_turn + 1) % 2; 
+    } 
+
+
 }
 
 impl ToString for Board {
@@ -75,7 +89,8 @@ mod tests {
     #[test]
     fn player_1_plays_in_bottom_right() {
         let mut board = Board::new(3, 2);
-        board.player_plays(0, 2);
+
+        assert_eq!(board.player_plays(0, 2).is_ok(), true);
 
         assert_eq!(board.to_string(), 
             String::from("_ _ _\n")
@@ -86,12 +101,38 @@ mod tests {
     #[test]
     fn both_player_play() {
         let mut board = Board::new(3, 2);
-        board.player_plays(0, 2);
-        board.player_plays(0, 1);
+
+        assert_eq!(board.player_plays(0, 2).is_ok(), true);
+        assert_eq!(board.player_plays(0, 1).is_ok(), true);
 
         assert_eq!(board.to_string(), 
             String::from("_ _ _\n")
                     .add("_ O X\n")
+        );
+    }
+
+    #[test]
+    fn out_of_bound() {
+        let mut board = Board::new(3, 2);
+
+        assert_eq!(board.player_plays(3, 2).is_ok(), false);
+
+        assert_eq!(board.player_plays(0, 3).is_ok(), false) ;
+
+        assert_eq!(board.player_plays(3, 3).is_ok(), false) ;
+    }
+
+    #[test]
+    fn player_cant_play_if_already_played() {
+        let mut board = Board::new(3, 2);
+
+        assert_eq!(board.player_plays(0, 0).is_ok(), true);
+
+        assert_eq!(board.player_plays(0, 0).is_ok(), false);
+
+        assert_eq!(board.to_string(), 
+            String::from("_ _ _\n")
+                    .add("X _ _\n")
         );
     }
 }

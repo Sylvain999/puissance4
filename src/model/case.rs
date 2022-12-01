@@ -15,8 +15,14 @@ impl Case {
         }
     }
     
-    pub fn set_player(&mut self, player : Player) {
-        self.player = Some(player);
+    pub fn set_player(&mut self, player : Player) -> Result<(), &str> {
+        if let Some(_) = self.player
+        {
+            Err("A player has already played in this case")
+        } else {
+            self.player = Some(player);
+            Ok(())
+        }        
     }
 }
 
