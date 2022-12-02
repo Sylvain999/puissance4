@@ -87,6 +87,10 @@ impl Board {
         self.player_turn = (self.player_turn + 1) % 2; 
     }
 
+    pub fn get_cases(&self) -> &Vec<Vec<Case>> {
+        &self.cases
+    }
+
     /// Give the strike, series number of different cases that are close to each other, and make a line (column = false, row =true), 
     /// a column (column = true, row =false) or a diagonal (column = true, row =true)
     fn get_strike(&self, coord_x : usize, coord_y : usize, column : bool, row : bool) -> u32 {
@@ -172,7 +176,7 @@ impl Board {
             self.winner =  match self.player_turn {
                 0 => Some(Player::Player1),
                 1 => Some(Player::Player2),
-                default => None,
+                _default => None,
             };
 
         }
