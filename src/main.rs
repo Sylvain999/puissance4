@@ -1,6 +1,8 @@
 mod view;
 pub mod model;
 
+use view::main_component::MainComponent;
+
 fn main() {
-    println!("Hello, world!");
+    yew::Renderer::<MainComponent>::new().render();
 }

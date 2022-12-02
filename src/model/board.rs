@@ -21,9 +21,9 @@ impl Board {
 
         // we create a matric of empty cases
         let cases = (0..height)
-            .map(|_| (
+            .map(|y| (
                 (0..width)
-                    .map(|_| Case::new())
+                    .map(|x| Case::new())
                     .collect::<Vec<Case>>()
             ))
             .collect::<Vec<Vec<Case>>>();
@@ -85,6 +85,10 @@ impl Board {
     /// ```
     fn prepare_next_turn(&mut self) {
         self.player_turn = (self.player_turn + 1) % 2; 
+    }
+
+    pub fn get_cases(&self) -> &Vec<Vec<Case>> {
+        &self.cases
     }
 
     /// Give the strike, series number of different cases that are close to each other, and make a line (column = false, row =true), 

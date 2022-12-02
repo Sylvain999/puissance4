@@ -24,7 +24,7 @@ impl Player {
 
 
 pub struct Case {
-    player : Option<Player>
+    player : Option<Player>,
 }
 
 impl Case {

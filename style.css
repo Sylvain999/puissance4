@@ -1,0 +1,111 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+body {
+    line-height: 1;
+}
+ol, ul {
+    list-style: none;
+}
+blockquote, q {
+    quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border-top : 1px solid;
+}
+
+tr {
+    display: block;
+    padding: 0%;
+    margin: 0%;
+    border-bottom : 1px solid;
+    border-left : 1px solid;
+}
+
+td {
+    border-right: 1px solid;
+    margin : 0%;
+}
+
+.case {
+    width : 25px;
+    height : 25px;
+}
+
+.red {
+    display: block;
+    background-color: red;
+    border-radius: 50%;
+    width : 100%;
+    height : 100%;
+}
+
+.yellow {
+    display: block;
+    background-color: yellow;
+    border-radius: 50%;
+    width : 25px;
+    height : 25px;
+}
+
+.centered {
+    margin : auto;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.title {
+    font-size: 30px;
+    font-weight: bold;
+    line-height: 60px;
+    padding-bottom: 30px;
+}
+
+.button-restart {
+    margin-top: 30px;
+    font-size: 20px;
+    background-color: rgb(149, 198, 241);
+    border: 4px solid #cccccc;
+    display: block;
+    width : 200px;
+    transition: all 0.5s;
+}
+
+.button-restart:hover {
+    background-color: rgb(102, 176, 240);
+}
