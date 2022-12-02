@@ -39,7 +39,7 @@ impl Component for BoardComponent {
         let link = ctx.link();
 
         html! {
-            <table class="centered"> 
+            <div class="centered"> 
             {
                 self.board
                     .get_cases()
@@ -47,7 +47,7 @@ impl Component for BoardComponent {
                     .enumerate()
                     .map( |(x, vec)| 
                         html! { 
-                            <tr>
+                            <div class="ligne">
                             {
                                 vec
                                 .iter()
@@ -59,19 +59,19 @@ impl Component for BoardComponent {
                                         };
 
                                         html! {
-                                            <td class="case" onclick={link.callback(move |_| Msg{coord_x : x.clone(), coord_y: y.clone()})}>
+                                            <div class="case" onclick={link.callback(move |_| Msg{coord_x : x.clone(), coord_y: y.clone()})}>
                                                 <CaseComponent ..pre_made_props />
-                                            </td>
+                                            </div>
                                         }  
                                     }
                                       
                                 ).collect::<Html>()
                             }
-                            </tr> 
+                            </div> 
                         }
                     ).collect::<Html>()
             }
-            </table>
+            </div>
         }
 
     }
