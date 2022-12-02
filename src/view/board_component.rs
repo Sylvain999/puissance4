@@ -30,7 +30,9 @@ impl Component for BoardComponent {
     }
 
     fn update(&mut self, _ctx: &Context<Self>, msg: Self::Message) -> bool {
-        self.board.player_plays(msg.coord_x, msg.coord_y);
+        if self.board.player_plays(msg.coord_x, msg.coord_y).is_err() {
+            println!("You cannot play here");
+        }
 
         true
     }
@@ -76,15 +78,9 @@ impl Component for BoardComponent {
 
     }
 
-    fn changed(&mut self, ctx: &Context<Self>, old_props: &Self::Properties) -> bool {
+    fn changed(&mut self, _ctx: &Context<Self>, _old_props: &Self::Properties) -> bool {
         self.board = Board::new(20, 20);
         return true;
-
-        // if old_props.restart == false {
-            
-        // }
-        
-        // false
     }
 
 }

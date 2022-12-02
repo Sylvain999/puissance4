@@ -21,9 +21,9 @@ impl Board {
 
         // we create a matric of empty cases
         let cases = (0..height)
-            .map(|y| (
+            .map(|_| (
                 (0..width)
-                    .map(|x| Case::new())
+                    .map(|_| Case::new())
                     .collect::<Vec<Case>>()
             ))
             .collect::<Vec<Vec<Case>>>();
@@ -176,7 +176,7 @@ impl Board {
             self.winner =  match self.player_turn {
                 0 => Some(Player::Player1),
                 1 => Some(Player::Player2),
-                default => None,
+                _default => None,
             };
 
         }

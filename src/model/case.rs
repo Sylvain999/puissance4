@@ -1,4 +1,4 @@
-use std::{u8, default};
+use std::{u8};
 
 #[derive(Debug)]
 pub enum Player {
@@ -17,7 +17,7 @@ impl Player {
         match index {
             0 => *self == Player::Player1,
             1 => *self == Player::Player2,
-            default => false,
+            _default => false,
         }
     }
 }

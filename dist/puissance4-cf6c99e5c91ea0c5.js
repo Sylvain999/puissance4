@@ -581,11 +581,11 @@ function getImports() {
     imports.wbg.__wbindgen_throw = function(arg0, arg1) {
         throw new Error(getStringFromWasm0(arg0, arg1));
     };
-    imports.wbg.__wbindgen_closure_wrapper4230 = function(arg0, arg1, arg2) {
+    imports.wbg.__wbindgen_closure_wrapper4231 = function(arg0, arg1, arg2) {
         const ret = makeMutClosure(arg0, arg1, 283, __wbg_adapter_16);
         return addHeapObject(ret);
     };
-    imports.wbg.__wbindgen_closure_wrapper4281 = function(arg0, arg1, arg2) {
+    imports.wbg.__wbindgen_closure_wrapper4282 = function(arg0, arg1, arg2) {
         const ret = makeMutClosure(arg0, arg1, 303, __wbg_adapter_19);
         return addHeapObject(ret);
     };
@@ -624,7 +624,7 @@ function initSync(module) {
 
 async function init(input) {
     if (typeof input === 'undefined') {
-        input = new URL('puissance4-345561a250aa18d7_bg.wasm', import.meta.url);
+        input = new URL('puissance4-cf6c99e5c91ea0c5_bg.wasm', import.meta.url);
     }
     const imports = getImports();
 

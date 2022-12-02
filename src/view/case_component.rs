@@ -12,7 +12,7 @@ pub fn CaseComponent(props: &Props) -> Html {
         "_" => html!{<div />},
         "X" => html!{<div class="red"/>},
         "O" => html!{<div class="yellow"/>},
-        default => html!{"Err"}
+        _default => html!{"Err"}
     }
 }
 

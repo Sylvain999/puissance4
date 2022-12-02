@@ -1,4 +1,4 @@
-use yew::{function_component, Html, html, Component, props, Properties};
+use yew::{Html, html, Component, props};
 
 use crate::view::board_component::{BoardComponent, RestartProps};
 
@@ -15,7 +15,7 @@ impl Component for MainComponent {
 
     type Properties = ();
 
-    fn create(ctx: &yew::Context<Self>) -> Self {
+    fn create(_ctx: &yew::Context<Self>) -> Self {
         Self {
             restart : false
         }
@@ -59,22 +59,3 @@ impl Component for MainComponent {
     }
 
 }
-
-// #[function_component]
-// pub fn MainComponent() -> Html {
-//     html!{
-//         <>
-//             <h1 class="text-center title"> {"Puissance 4"} </h1>
-
-//             <main>
-//                 <div class="percents-75">
-//                     <BoardComponent />
-//                 </div>
-
-//                 <button class="button-restart centered">
-//                     {"Restart"}
-//                 </button>
-//             </main>
-//         </>
-//     }
-// }
